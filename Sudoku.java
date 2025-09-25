@@ -31,7 +31,16 @@ public class Sudoku {
     public int[][] createBoard(String fileName, int boardType){
         Scanner getData = new Scanner(fileName);
         int[][] gameBoard = new int[boardType][boardType];
-        Scanner file
+        getData.nextLine();
+        getData.useDelimiter(",");
+        while(getData.hasNextLine()){
+            int row = getData.nextInt();
+            int column = getData.nextInt();
+            int value = getData.nextInt();
+            gameBoard[row][column] = value;
+            getData.nextLine();
+        }
+        getData.close();
         return gameBoard;
     }
 
