@@ -55,6 +55,11 @@ public class Sudoku {
         return new int[0][0];
     }
 
+    public static boolean solveSudoku(int[][] sudokuBoard, int fileType) {
+        
+        return false;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, please input the filename for a sudoku puzzle.");
