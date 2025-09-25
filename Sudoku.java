@@ -71,32 +71,53 @@ public class Sudoku {
         }else{return 6;}
     }
 
-    public static boolean checkXY(int[][] sudokuBoard, int row, int column, int value,int fileType){
-        for (int i = 0; i < fileType; i++){
-            
+    public static boolean checkXY(int[][] sudokuBoard, int row, int column, int value){
+        for (int i = 0; i < 9; i++){
+            if(sudokuBoard[i][column] == value){
+                return false;
+            }
+        }
+        for (int i = 0; i < 9; i++){
+            if(sudokuBoard[row][i] == value){
+                return false;
+            }
         }
         return true;
     }
 
-    public static boolean solveSudoku(int[][] sudokuBoard, int fileType) {
-        if(fileType == 4){
-            for(int row = 0; row < 9; row++){
-                for(int column = 0; column < 9; column++){
-                    if(sudokuBoard[row][column] == 0){
-                        for(int count = 1; count <= 9; count++){
-                            
+    public static boolean checkSubGrid(int[][] sudokuBoard, int row, int column, int value){
+        
+        return true;
+    }
+
+    public static boolean solveSudoku(int[][] sudokuBoard, int row, int column, int fileType) {
+        if(fileType == 9){
+            if(sudokuBoard[row][column] == 0){
+                for(int count = 1; count <= 9; count++){
+                    if(checkXY(sudokuBoard, row, column, count)){
+                        if(checkSubGrid(sudokuBoard, row, column, count)){
+                            if(row == 8 && column == 8){
+                                return true;
+                            }
+                            if(row == 8){
+                                column++;
+                                row = -1;
+                            }
+                            sudokuBoard[row][column] = count;
+                            return solveSudoku(sudokuBoard, row++, column, fileType);
                         }
                     }
                 }
             }
+            if(row == 8){
+                column++;
+                row = -1;
+            }
+            return solveSudoku(sudokuBoard, row++, column, fileType);
         }
 
-        if(fileType == 9){
-            for(int row = 0; row < 9; row++){
-                for(int column = 0; column < 9; column++){
-                
-                }
-            }
+        if(fileType == 4){
+            
         }
         return false;
     }
