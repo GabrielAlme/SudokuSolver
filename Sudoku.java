@@ -21,6 +21,16 @@ public class Sudoku {
         return 0;
     }
 
+    public int[][] createBoard(String fileName, int boardType){
+        Scanner getData = new Scanner(fileName);
+        if(boardType == 4){
+
+        }
+        if(boardType == 9){
+
+        }
+
+    }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
