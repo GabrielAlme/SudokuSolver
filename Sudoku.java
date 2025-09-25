@@ -55,19 +55,38 @@ public class Sudoku {
         return new int[0][0];
     }
 
-    public static  int subRow(){
-        return 0;
+    public static  int subRow(int current){
+        if( current < 3){
+            return 0;
+        } else if(current < 6){
+            return 3;
+        }else{return 6;}
     }
 
-    public static  int subColumn(){
-        return 0;
+    public static  int subColumn(int current){
+        if( current < 3){
+            return 0;
+        } else if(current < 6){
+            return 3;
+        }else{return 6;}
+    }
+
+    public static boolean checkXY(int[][] sudokuBoard, int row, int column, int value,int fileType){
+        for (int i = 0; i < fileType; i++){
+            
+        }
+        return true;
     }
 
     public static boolean solveSudoku(int[][] sudokuBoard, int fileType) {
         if(fileType == 4){
             for(int row = 0; row < 9; row++){
                 for(int column = 0; column < 9; column++){
-                
+                    if(sudokuBoard[row][column] == 0){
+                        for(int count = 1; count <= 9; count++){
+                            
+                        }
+                    }
                 }
             }
         }
