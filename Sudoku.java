@@ -137,11 +137,12 @@ public class Sudoku {
         int fileType = fileCheck(fileName);
         System.out.println(fileType);
         int[][] sudokuBoard = createBoard(fileName, fileType);
-        for(int i = 0; i < fileType; i++){
-            for(int j = 0; j < fileType; j++){
-                System.out.println(sudokuBoard[i][j]);
-            }
+        if(solveSudoku(sudokuBoard, 0, 0, fileType)){
+            System.out.println("this is a valid puzzle and is solved");
+        } else{
+            System.out.println("this is NOT a valid puzzle and is solved");
         }
+
         scanner.close();
     }
 }
