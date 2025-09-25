@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Sudoku {
 
-    public int fileCheck(String fileName){
+    public static int fileCheck(String fileName){
         File file = new File(fileName);
         try(Scanner fileRead = new Scanner(file)){
             if(fileRead.hasNextLine()){
@@ -23,6 +23,10 @@ public class Sudoku {
 
 
     public static void main(String[] args) {
-        System.out.println("Hello, Sudoku!");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hello, please input the filename for a sudoku puzzle.");
+        String fileName = scanner.nextLine();
+        System.out.println(fileCheck(fileName));
+        scanner.close();
     }
 }
