@@ -13,11 +13,11 @@ public class Sudoku {
                 if(boardSize.equals("4x4")){ return 4; }
             }
         } catch(FileNotFoundException e){
-            System.out.println("File not found, please input a new file name.")
+            System.out.println("File not found, please input a new file name.");
             return 0;
         }
 
-
+        System.out.println("This is not a sudoku file, please input a new file name.");
         return 0;
     }
 
