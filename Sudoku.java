@@ -28,27 +28,45 @@ public class Sudoku {
         return 0;
     }
 
-    public int[][] createBoard(String fileName, int boardType){
-        Scanner getData = new Scanner(fileName);
+    public static int[][] createBoard(String fileName, int boardType){
+        File file = new File(fileName);
+        try (Scanner getData = new Scanner(file)){
         int[][] gameBoard = new int[boardType][boardType];
         getData.nextLine();
-        getData.useDelimiter(",");
+        System.out.println("here");
+        getData.useDelimiter("[\\s,]+");
         while(getData.hasNextLine()){
             int row = getData.nextInt();
+            System.out.println("ROW: " + row);
             int column = getData.nextInt();
+            System.out.println("COLUMN: " + column);
             int value = getData.nextInt();
-            gameBoard[row][column] = value;
+            System.out.println("VALUE: " + value);
+            gameBoard[row - 1][column - 1] = value;
+            if(getData.hasNextLine()){
             getData.nextLine();
+            }
         }
         getData.close();
         return gameBoard;
+        } catch(FileNotFoundException e){
+            System.out.println("Fatal File Error");
+        }
+        return new int[0][0];
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello, please input the filename for a sudoku puzzle.");
         String fileName = scanner.nextLine();
-        System.out.println(fileCheck(fileName));
+        int fileType = fileCheck(fileName);
+        System.out.println(fileType);
+        int[][] sudokuBoard = createBoard(fileName, fileType);
+        for(int i = 0; i < fileType; i++){
+            for(int j = 0; j < fileType; j++){
+                System.out.println(sudokuBoard[i][j]);
+            }
+        }
         scanner.close();
     }
 }
