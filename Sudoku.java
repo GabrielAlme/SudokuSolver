@@ -55,8 +55,30 @@ public class Sudoku {
         return new int[0][0];
     }
 
+    public static  int subRow(){
+        return 0;
+    }
+
+    public static  int subColumn(){
+        return 0;
+    }
+
     public static boolean solveSudoku(int[][] sudokuBoard, int fileType) {
-        
+        if(fileType == 4){
+            for(int row = 0; row < 9; row++){
+                for(int column = 0; column < 9; column++){
+                
+                }
+            }
+        }
+
+        if(fileType == 9){
+            for(int row = 0; row < 9; row++){
+                for(int column = 0; column < 9; column++){
+                
+                }
+            }
+        }
         return false;
     }
 
