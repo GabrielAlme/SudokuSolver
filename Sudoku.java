@@ -9,8 +9,15 @@ public class Sudoku {
         try(Scanner fileRead = new Scanner(file)){
             if(fileRead.hasNextLine()){
                 String boardSize = fileRead.nextLine();
-                if(boardSize.equals("9x9")){ return 9; }
-                if(boardSize.equals("4x4")){ return 4; }
+                if(boardSize.equals("9x9")){
+                    fileRead.close();
+                    return 9;
+                }
+                if(boardSize.equals("4x4")){
+                    fileRead.close();
+                    return 4;
+                }
+            fileRead.close();
             }
         } catch(FileNotFoundException e){
             System.out.println("File not found, please input a new file name.");
@@ -23,13 +30,9 @@ public class Sudoku {
 
     public int[][] createBoard(String fileName, int boardType){
         Scanner getData = new Scanner(fileName);
-        if(boardType == 4){
-
-        }
-        if(boardType == 9){
-
-        }
-
+        int[][] gameBoard = new int[boardType][boardType];
+        Scanner file
+        return gameBoard;
     }
 
     public static void main(String[] args) {
