@@ -107,12 +107,14 @@ public class Sudoku {
                             if(row == 8 && column == 8){
                                 return true;
                             }
+                            sudokuBoard[row][column] = count;
                             if(row == 8){
                                 column++;
                                 row = -1;
                             }
-                            sudokuBoard[row][column] = count;
-                            return solveSudoku(sudokuBoard, row++, column, fileType);
+                            row++;
+                            System.out.println("current value:" + sudokuBoard[row][column]);
+                            return solveSudoku(sudokuBoard, row,column, fileType);
                         }
                     }
                 }
@@ -121,7 +123,8 @@ public class Sudoku {
                 column++;
                 row = -1;
             }
-            return solveSudoku(sudokuBoard, row++, column, fileType);
+            row++;
+            return solveSudoku(sudokuBoard, row, column, fileType);
         }
 
         if(fileType == 4){
