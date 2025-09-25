@@ -71,13 +71,13 @@ public class Sudoku {
         }else{return 6;}
     }
 
-    public static boolean checkXY(int[][] sudokuBoard, int row, int column, int value){
-        for (int i = 0; i < 9; i++){
+    public static boolean checkXY(int[][] sudokuBoard, int row, int column, int value, int fileType){
+        for (int i = 0; i < fileType; i++){
             if(sudokuBoard[i][column] == value){
                 return false;
             }
         }
-        for (int i = 0; i < 9; i++){
+        for (int i = 0; i < fileType; i++){
             if(sudokuBoard[row][i] == value){
                 return false;
             }
@@ -86,7 +86,15 @@ public class Sudoku {
     }
 
     public static boolean checkSubGrid(int[][] sudokuBoard, int row, int column, int value){
-        
+            int rowOffset = subRow(row);
+            int columnOffset = subColumn(column);
+            for(int i = 0; i < 3; i++){
+                for(int j = 0; j < 3; j++){
+                    if(sudokuBoard[i + rowOffset][j + columnOffset] == value){
+                        return false;
+                    }
+                }
+            }
         return true;
     }
 
@@ -94,7 +102,7 @@ public class Sudoku {
         if(fileType == 9){
             if(sudokuBoard[row][column] == 0){
                 for(int count = 1; count <= 9; count++){
-                    if(checkXY(sudokuBoard, row, column, count)){
+                    if(checkXY(sudokuBoard, row, column, count, fileType)){
                         if(checkSubGrid(sudokuBoard, row, column, count)){
                             if(row == 8 && column == 8){
                                 return true;
